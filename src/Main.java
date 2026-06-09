@@ -1,13 +1,40 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+import Model.Tarefa;
+import Util.AuxiliarTarefa;
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+import static Util.AuxiliarTarefa.criacaoTarefa;
+
+void main() {
+        int escolha = 0;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("===== TO DO LIST =====\n" + "\n" +
+                    "1 - Criar tarefa\n" +
+                    "2 - Listar tarefas\n" +
+                    "3 - Concluir tarefa\n" +
+                    "4 - Filtrar por prioridade\n" +
+                    "5 - Filtrar por status\n" +
+                    "6 - Excluir tarefa\n" +
+                    "7 - Salvar\n" +
+                    "0 - Sair");
+            escolha = scanner.nextInt();
+            switch (escolha){
+                case 0:
+                    System.out.println("Saindo do programa...");
+                    break;
+                case 1:
+                    if(criacaoTarefa(scanner)){
+                        System.out.println("Tarefa criada com sucesso");
+                    }
+                    else{
+                        System.out.println("ERRO");
+                    }
+                    break;
+                case 2: break;
+                case 3: break;
+                case 4: break;
+                case 5: break;
+                case 6: break;
+                case 7: break;
+            }
+        }while (escolha != 0);
 }
