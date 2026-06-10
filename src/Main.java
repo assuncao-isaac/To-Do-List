@@ -2,6 +2,7 @@ import Model.Tarefa;
 import Util.AuxiliarTarefa;
 
 import static Util.AuxiliarTarefa.criacaoTarefa;
+import static Util.AuxiliarTarefa.imprimirTarefas;
 
 void main() {
         int escolha = 0;
@@ -15,13 +16,14 @@ void main() {
                     "5 - Filtrar por status\n" +
                     "6 - Excluir tarefa\n" +
                     "7 - Salvar\n" +
-                    "0 - Sair");
+                    "0 - Sair \n");
             escolha = scanner.nextInt();
             switch (escolha){
                 case 0:
                     System.out.println("Saindo do programa...");
                     break;
                 case 1:
+                    System.out.println("Entrando na criação de tarefa... \n");
                     if(criacaoTarefa(scanner)){
                         System.out.println("Tarefa criada com sucesso");
                     }
@@ -29,7 +31,11 @@ void main() {
                         System.out.println("ERRO");
                     }
                     break;
-                case 2: break;
+                case 2:
+                    if (!imprimirTarefas()){
+                        System.out.println("Lista vazia");
+                    }
+                    break;
                 case 3: break;
                 case 4: break;
                 case 5: break;
