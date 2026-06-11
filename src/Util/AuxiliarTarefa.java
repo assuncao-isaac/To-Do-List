@@ -4,6 +4,7 @@ import Model.Prioridade;
 import Model.Tarefa;
 import Repository.ListaTarefas;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +20,15 @@ public class AuxiliarTarefa {
         System.out.println("1 - ALTA");
         System.out.println("2 - MÉDIA");
         System.out.println("3 - ALTA");
-        int escolhas = scanner.nextInt();
+        int escolhas;
+        try {
+            escolhas = scanner.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("saída inesperada");
+            scanner.next();
+            return false;
+        }
+
         Prioridade prioridade;
         switch (escolhas){
             case 1:
@@ -45,10 +54,12 @@ public class AuxiliarTarefa {
     public static boolean imprimirTarefas(){
         if(!ListaTarefas.getTarefas().isEmpty()) {
             List<Tarefa> tarefas = ListaTarefas.getTarefas();
+            int indexTarefa = 0;
             for (Tarefa tarefa : tarefas) {
                 System.out.println("==============================");
+                System.out.println("Número:    "+"["+indexTarefa+"]");
                 System.out.println("TAREFA:    "+tarefa.getTitulo());
-                System.out.println("DESCIÇÂO:  "+tarefa.getDescricao());
+                System.out.println("DESCRIÇÃO:  "+tarefa.getDescricao());
                 System.out.println("STATUS:    "+tarefa.getStatus());
                 System.out.println("PRIORIDADE:"+tarefa.getPrioridade());
                 System.out.println("CRIAÇÂO:   "+tarefa.getCriacao());
@@ -60,5 +71,19 @@ public class AuxiliarTarefa {
         else {
             return false;
         }
+    }
+    public static boolean concluirTarefa(Scanner scanner){
+        List<Tarefa> tarefas = ListaTarefas.getTarefas();
+        System.out.println("Qual o númeo da tarefa que deseja concluir? ");
+        try {
+            Tarefa tarefa = tarefas.get(scanner.nextInt());
+            tarefa.concluirStatus();
+            System.out.println("tarefa: "+tarefa.getTitulo()+" concluida!!!");
+            return true;
+        }catch (IndexOutOfBoundsException | InputMismatchException e){
+            System.out.println("saída inesperada");
+            return false;
+        }
+
     }
 }

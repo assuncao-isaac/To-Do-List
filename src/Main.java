@@ -1,8 +1,7 @@
 import Model.Tarefa;
 import Util.AuxiliarTarefa;
 
-import static Util.AuxiliarTarefa.criacaoTarefa;
-import static Util.AuxiliarTarefa.imprimirTarefas;
+import static Util.AuxiliarTarefa.*;
 
 void main() {
         int escolha = 0;
@@ -36,11 +35,22 @@ void main() {
                         System.out.println("Lista vazia");
                     }
                     break;
-                case 3: break;
-                case 4: break;
+                case 3:
+                    if (!imprimirTarefas()){
+                        System.out.println("Lista vazia");
+                    }else{
+                        if(!concluirTarefa(scanner)){
+                            System.out.println("Por favor digite apenas números ao escolher a tarefa");
+                        }
+                    }
+                    break;
+                case 4:
+
+                    break;
                 case 5: break;
                 case 6: break;
                 case 7: break;
             }
         }while (escolha != 0);
+        scanner.close();
 }

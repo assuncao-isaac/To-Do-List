@@ -25,6 +25,7 @@ public class Tarefa {
         return titulo;
     }
 
+
     public String getDescricao() {
         return descricao;
     }
@@ -43,5 +44,9 @@ public class Tarefa {
 
     public String getPrazo() {
         return prazo;
+    }
+
+    public void concluirStatus() {
+        status = Status.CONCLUIDO;
     }
 }
