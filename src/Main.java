@@ -1,21 +1,21 @@
-import Model.Tarefa;
-import Util.AuxiliarTarefa;
-
 import static Util.AuxiliarTarefa.*;
 
 void main() {
-        int escolha = 0;
+        int escolha;
         Scanner scanner = new Scanner(System.in);
         do {
-            System.out.println("===== TO DO LIST =====\n" + "\n" +
-                    "1 - Criar tarefa\n" +
-                    "2 - Listar tarefas\n" +
-                    "3 - Concluir tarefa\n" +
-                    "4 - Filtrar por prioridade\n" +
-                    "5 - Filtrar por status\n" +
-                    "6 - Excluir tarefa\n" +
-                    "7 - Salvar\n" +
-                    "0 - Sair \n");
+            System.out.println("""
+                    ===== TO DO LIST =====
+                    
+                    1 - Criar tarefa
+                    2 - Listar tarefas
+                    3 - Concluir tarefa
+                    4 - Filtrar por prioridade
+                    5 - Filtrar por status
+                    6 - Excluir tarefa
+                    7 - Salvar
+                    0 - Sair\s
+                    """);
             escolha = scanner.nextInt();
             switch (escolha){
                 case 0:
@@ -31,12 +31,12 @@ void main() {
                     }
                     break;
                 case 2:
-                    if (!imprimirTarefas()){
+                    if (imprimirTarefas()){
                         System.out.println("Lista vazia");
                     }
                     break;
                 case 3:
-                    if (!imprimirTarefas()){
+                    if (imprimirTarefas()){
                         System.out.println("Lista vazia");
                     }else{
                         if(!concluirTarefa(scanner)){
@@ -45,11 +45,26 @@ void main() {
                     }
                     break;
                 case 4:
-
+                    if (!imprimirTarefasPrioridade(scanner)){
+                        System.out.println("Lista vazia");
+                    }
                     break;
-                case 5: break;
-                case 6: break;
-                case 7: break;
+                case 5:
+                    if (!imprimirTarefasStatus(scanner)){
+                        System.out.println("Lista vazia");
+                    }
+                    break;
+                case 6:
+                    if (imprimirTarefas()){
+                        System.out.println("Lista vazia");
+                    }else{
+                        if(!excluirTarefa(scanner)){
+                            System.out.println("Por favor digite apenas números ao escolher a tarefa");
+                        }
+                    }
+                    break;
+                case 7:
+                    break;
             }
         }while (escolha != 0);
         scanner.close();

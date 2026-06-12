@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaTarefas {
-    private static List<Tarefa> tarefas = new ArrayList<>();
+    private static final List<Tarefa> tarefas = new ArrayList<>();
 
     public static List<Tarefa> getTarefas() {
         return tarefas;

@@ -1,16 +1,16 @@
 package Model;
 
-import Util.Data;
+
 
 import static Util.Data.dataAtual;
 
 public class Tarefa {
-    private String titulo;
-    private String descricao;
-    private Prioridade prioridade;
+    private final String titulo;
+    private final String descricao;
+    private final Prioridade prioridade;
     private Status status;
-    private String criacao;
-    private String prazo;
+    private final String criacao;
+    private final String prazo;
 
     public Tarefa(String titulo, String descricao, Prioridade prioridade, String prazo) {
         this.titulo = titulo;
